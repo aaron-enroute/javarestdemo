@@ -23,7 +23,6 @@ public class Employee {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer emp_no;
 
-
 	@Column(name = "birth_date", nullable = false)
 	private Date birthDate;
 
