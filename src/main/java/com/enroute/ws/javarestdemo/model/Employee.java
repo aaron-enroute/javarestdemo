@@ -18,7 +18,7 @@ import lombok.Data;
 @Entity
 @Table(name = "employees")
 public class Employee {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer emp_no;

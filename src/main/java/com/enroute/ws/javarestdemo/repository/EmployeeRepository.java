@@ -7,12 +7,12 @@ import org.springframework.stereotype.Repository;
 
 import com.enroute.ws.javarestdemo.model.Employee;
 
-@Repository 
+@Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
 //findTopByCountryOrderByRetVersionDesc
 	Employee findTopBy();
-	//findByStartGreaterThan
-	
-	Iterable<Employee>findByHireDateGreaterThan(Date d); 
+	// findByStartGreaterThan
+
+	Iterable<Employee> findByHireDateGreaterThan(Date d);
 }

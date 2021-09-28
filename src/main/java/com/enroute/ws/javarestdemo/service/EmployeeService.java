@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.enroute.ws.javarestdemo.repository.EmployeeRepository;
 import com.enroute.ws.javarestdemo.model.Employee;
+import com.enroute.ws.javarestdemo.repository.EmployeeRepository;
 
 @Service
 public class EmployeeService {
@@ -25,14 +25,14 @@ public class EmployeeService {
 	}
 
 	public Iterable<Employee> getAllStartingFrom(Date d) {
-		//TODO:Verificar como funciona JPARepository (de Spring)
+		// TODO:Verificar como funciona JPARepository (de Spring)
 		return empRepo.findByHireDateGreaterThan(d);
 	}
 
 	public Employee save(Employee employee) {
 
 		if (null == employee.getEmp_no()) {
-			System.out.println("fecha nacimiento: "+employee.getBirthDate());
+			System.out.println("fecha nacimiento: " + employee.getBirthDate());
 			Integer newId = empRepo.findTopBy().getEmp_no() + 1;
 			employee.setEmp_no(newId);
 		}
