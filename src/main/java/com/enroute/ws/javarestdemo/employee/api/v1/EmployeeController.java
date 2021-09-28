@@ -28,7 +28,7 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService employeeService;
 
-	@GetMapping("/employees")
+	@GetMapping("/employee")
 	public Iterable<Employee> retrieveAllUsers(@RequestParam(defaultValue = "1990-01-01") String hireDate)
 			throws ParseException {
 		// String hireDate = "1990-01-01";
@@ -38,7 +38,7 @@ public class EmployeeController {
 
 	}
 
-	@GetMapping("/employees/{id}")
+	@GetMapping("/employee/{id}")
 	public Optional<Employee> retrieveUser(@PathVariable Integer id) {
 		return employeeService.findById(id);
 	}
