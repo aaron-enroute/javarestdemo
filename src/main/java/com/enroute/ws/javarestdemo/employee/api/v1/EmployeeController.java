@@ -19,9 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.enroute.ws.javarestdemo.model.Employee;
 import com.enroute.ws.javarestdemo.service.EmployeeService;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 @RestController
 public class EmployeeController {
 
@@ -31,7 +28,6 @@ public class EmployeeController {
 	@GetMapping("/employee")
 	public Iterable<Employee> retrieveAllUsers(@RequestParam(defaultValue = "1990-01-01") String hireDate)
 			throws ParseException {
-		// String hireDate = "1990-01-01";
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
 		Date date = dateFormat.parse(hireDate);
 		return employeeService.getAllStartingFrom(date);
@@ -43,10 +39,17 @@ public class EmployeeController {
 		return employeeService.findById(id);
 	}
 
-	// @PostMapping ("/employees")
-	@RequestMapping(value = "/employees", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Employee createUser(@RequestBody Employee employee) throws SQLException, ClassNotFoundException {
-
-		return employeeService.save(employee);
+	@RequestMapping(value = "/employee/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Employee updateUser(@PathVariable("id") Integer id, @RequestBody Employee employee) throws SQLException, ClassNotFoundException {
+		Optional<Employee> empService=employeeService.findById(id);
+		Employee emp = empService.get();
+		if (empService.isPresent()) {
+			emp.setBirthDate(employee.getBirthDate());
+			emp.setFirstName(employee.getFirstName());
+			emp.setLastName(employee.getLastName());
+			emp.setGender(employee.getGender());
+			emp.setTitles(employee.getTitles());
+		}
+		return employeeService.save(emp);
 	}
 }

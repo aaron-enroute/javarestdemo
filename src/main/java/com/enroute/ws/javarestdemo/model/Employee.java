@@ -39,7 +39,6 @@ public class Employee {
 	private Date hireDate;
 
 	@OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
-	// @JoinColumn(name = "emp_no", referencedColumnName = "emp_no")
 	private List<Titles> titles;
 
 }

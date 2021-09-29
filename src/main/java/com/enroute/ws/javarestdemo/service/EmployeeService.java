@@ -25,7 +25,6 @@ public class EmployeeService {
 	}
 
 	public Iterable<Employee> getAllStartingFrom(Date d) {
-		// TODO:Verificar como funciona JPARepository (de Spring)
 		return empRepo.findByHireDateGreaterThan(d);
 	}
 

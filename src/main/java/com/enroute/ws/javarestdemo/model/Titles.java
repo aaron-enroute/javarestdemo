@@ -24,8 +24,6 @@ public class Titles {
 	@JoinColumn(name="emp_no", nullable=false, insertable=false, updatable=false)
 	private Employee employee;
 	
-	
-	
 	public Employee getEmployee() {
 		return employee;
 	}

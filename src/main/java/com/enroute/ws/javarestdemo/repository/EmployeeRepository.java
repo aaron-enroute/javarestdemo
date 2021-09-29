@@ -9,10 +9,6 @@ import com.enroute.ws.javarestdemo.model.Employee;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
-
-//findTopByCountryOrderByRetVersionDesc
 	Employee findTopBy();
-	// findByStartGreaterThan
-
 	Iterable<Employee> findByHireDateGreaterThan(Date d);
 }
