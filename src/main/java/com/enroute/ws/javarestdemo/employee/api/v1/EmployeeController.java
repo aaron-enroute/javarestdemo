@@ -25,7 +25,7 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService employeeService;
 
-	@GetMapping("/employee")
+	@GetMapping(value = "/employees", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Iterable<Employee> retrieveAllUsers(@RequestParam(defaultValue = "1990-01-01") String hireDate)
 			throws ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
